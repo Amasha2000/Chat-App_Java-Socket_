@@ -13,6 +13,9 @@ public class LoginFormController {
     public JFXTextField txtName;
 
     public void btnLogIn(ActionEvent actionEvent) throws IOException {
+
+
+
         Parent load = FXMLLoader.load(getClass().getResource("../view/ClientForm.fxml"));
         Scene scene = new Scene(load);
         Stage stage = new Stage();

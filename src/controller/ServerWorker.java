@@ -1,5 +1,7 @@
 package controller;
 
+import com.sun.deploy.util.StringUtils;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.Date;
@@ -27,8 +29,9 @@ public class ServerWorker extends Thread{
         InputStream inputStream = clientSocket.getInputStream();
         OutputStream outputStream = clientSocket.getOutputStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-        String line=reader.readLine();
-        while (line!=null) {
+        String line;
+        while ((line= reader.readLine())!=null) {
+//            String[] values = StringUtils.split(line);
             if ("quit".equalsIgnoreCase(line)) {
                 break;
             }
