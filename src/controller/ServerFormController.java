@@ -7,8 +7,10 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Date;
 
 public class ServerFormController{
 
@@ -16,26 +18,39 @@ public class ServerFormController{
     public JFXTextArea serverTextArea;
     public JFXTextField txtServer;
     public JFXButton btnServer;
-    Socket clientSocket=null;
-    ServerSocket serverSocket = null;
+//    Socket clientSocket=null;
+//    ServerSocket serverSocket = null;
+
+
+    public static void main(String[] args) throws IOException, InterruptedException {
+        ServerSocket serverSocket = new ServerSocket(5000);
+
+        while (true){
+            Socket clientSocket = serverSocket.accept();
+            ServerWorker worker = new ServerWorker(clientSocket);
+            worker.start();
+        }
+    }
+
+
 
     public void initialize() throws IOException {
-        new Thread(()->{
-            try {
-                serverSocket = new ServerSocket(5000);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            while (true) {
-                try {
-                    clientSocket = serverSocket.accept();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                System.out.println("Client Connected");
-            }
-        }).start();
+//        new Thread(()->{
+//            try {
+//                serverSocket = new ServerSocket(5000);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//            while (true) {
+//                try {
+//                    clientSocket = serverSocket.accept();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//                System.out.println("Client Connected");
+//            }
+//        }).start();
 
     }
 
