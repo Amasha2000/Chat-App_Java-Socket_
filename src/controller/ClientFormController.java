@@ -15,9 +15,17 @@ public class ClientFormController {
     public JFXTextField txtClient;
     public JFXButton btnClient;
 
+    Socket socket=null;
 
-    public static void main(String[] args) throws IOException {
-        Socket socket = new Socket("localhost",3000);
+    public void initialize() throws IOException {
+        new  Thread(()->{
+            try {
+                socket = new Socket("localhost",5000);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
 
     }
 
