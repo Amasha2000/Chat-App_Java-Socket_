@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="594.0" prefWidth="695.0" style="-fx-background-color: #432393;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ChatRoomFormController">
+   <children>
+      <StackPane prefHeight="598.0" prefWidth="695.0">
+         <children>
+            <Pane fx:id="profile" prefHeight="690.0" prefWidth="883.0" style="-fx-background-color: #432393;">
+               <children>
+                  <Label layoutX="270.0" layoutY="161.0" prefHeight="33.0" prefWidth="114.0" text="Full Name: " textFill="#e1dfdf">
+                     <font>
+                        <Font name="Arial" size="19.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="270.0" layoutY="231.0" prefHeight="38.0" prefWidth="96.0" text="Phone No:" textFill="#ebe7e7">
+                     <font>
+                        <Font name="Arial" size="19.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="fullName" layoutX="379.0" layoutY="161.0" opacity="0.0" prefHeight="33.0" prefWidth="296.0" textFill="#f2f2f2" wrapText="true">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="phoneNo" layoutX="379.0" layoutY="234.0" prefHeight="33.0" prefWidth="296.0" textFill="#f2f2f2">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="proImage" fitHeight="84.0" fitWidth="83.0" layoutX="570.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/user.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="270.0" layoutY="351.0" text="Change Profile Picture" textFill="#f8f5f5">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="fileChoosePath" editable="false" layoutX="262.0" layoutY="402.0" prefHeight="40.0" prefWidth="308.0" promptText="Choose Image..." style="-fx-background-color: white;">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <Button layoutX="597.0" layoutY="407.0" mnemonicParsing="false" onAction="#chooseImageButton" prefHeight="30.0" prefWidth="77.0" styleClass="allButton" stylesheets="@../css/style.css" text="Choose">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="318.0" layoutY="518.0" mnemonicParsing="false" onAction="#saveImage" prefHeight="38.0" prefWidth="274.0" style="-fx-background-color: gray; -fx-border-radius: 1;" stylesheets="@../css/style.css" text="Save" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="19.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="chat" prefHeight="690.0" prefWidth="733.0" style="-fx-background-color: #4e086e;">
+               <children>
+                  <TextArea fx:id="msgRoom" editable="false" layoutX="219.0" prefHeight="598.0" prefWidth="477.0" styleClass="text-area" stylesheets="@../css/style.css" wrapText="true">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </TextArea>
+                  <AnchorPane layoutX="183.0" layoutY="503.0" prefHeight="9.0" prefWidth="330.0" />
+                  <FontAwesomeIcon fill="#7a869e" glyphName="CAMERA" layoutX="576.0" layoutY="543.0" onMouseClicked="#chooseImageOnAction" size="2.2em">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </FontAwesomeIcon>
+                  <TextField fx:id="msgField" layoutX="239.0" layoutY="512.0" onKeyPressed="#sendMessageByKey" prefHeight="40.0" prefWidth="324.0" promptText="Write messages here...." styleClass="msgBox" stylesheets="@../css/style.css">
+                     <font>
+                        <Font name="Arial" size="19.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fitHeight="42.0" fitWidth="40.0" layoutX="636.0" layoutY="511.0" onMouseClicked="#handleSendEvent" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/icons8-sent.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fx:id="image" fitHeight="127.0" fitWidth="170.0" layoutX="278.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
+      <AnchorPane fx:id="sideBar" prefHeight="598.0" prefWidth="220.0" style="-fx-background-color: #37034d; -fx-border-color: white;">
+         <children>
+            <Label fx:id="clientName" layoutX="14.0" layoutY="22.0" prefHeight="31.0" prefWidth="114.0" text="Username" textFill="#cf70f8" wrapText="true">
+               <font>
+                  <Font name="Calibri Bold" size="26.0" />
+               </font>
+            </Label>
+            <Button fx:id="profileBtn" layoutX="42.0" layoutY="494.0" mnemonicParsing="false" onAction="#handleProfileBtn" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: #98a0b1;" stylesheets="@../css/style.css" text="View Profile">
+               <font>
+                  <Font name="Arial Bold" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Circle fx:id="showProPic" fill="DODGERBLUE" layoutX="110.0" layoutY="142.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
